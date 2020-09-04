@@ -1,40 +1,76 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    </head>
-    <body ng-controller="firstController">
-        <div>
-            <h1>{{ message }}</h1>
-        </div>
+<html>
 
-        <form>
-            Your Item: 
-            <input type="text" ng-model="product.title">
-            <input type="text" ng-model="product.desc">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-            <button ng-click="addItem()">Add</button>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-            <h2>You Entered: {{product.title}} </h2>
-            <h2>You Entered Desc: {{product.desc}} </h2>
+    <link rel="stylesheet" href="./style.css">
 
-            <ul>
-                <li ng-repeat="product in products">
-                    {{product.title + " - " + product.desc}}
-                    <span ng-click="removeItem($index)">×</span>
-                    <span ng-click="displayItem($index)">o</span>
-                </li>
-                
-            </ul>
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</head>
 
+<body ng-app="myApp" ng-controller="firstController">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="page-header">{{ message }}</h1>
+
+
+            <form>
+                Your Item:</br>
+                <input class="form-control form-control-lg" type="text" placeholder="Item"
+                    ng-model="product.title"></br>
+                Description of Item:
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Description"
+                    ng-model="product.desc"></textarea>
+                </br>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="addItem()">Add</button>
+                </br>
+                </br>
+                <h2>Item: {{product.title}} </h2>
+                </br>
+                <h2>Description: {{product.desc}} </h2>
+                </br>
+
+                <ul class="list-group" ng-show="!showCur">
+                    <li class="d-flex list-group-item list-group-item-info" ng-repeat="product in products">
+                        <span class="col-sm-8">{{product.title + " - " + product.desc}}</span>
+
+                        <button type="button" class="btn btn-dark col-sm-2"
+                            ng-click="removeItem($index)">Delete</button>
+                        <span>&nbsp;</span>
+                        <button type="button" class="btn btn-dark col-sm-2"
+                            ng-click="displayItem($index)">Open</button>
+
+                    </li>
+
+                </ul>
+
+                <div ng-show="showCur">
+                    {{cur.title + " " + cur.desc}}
+                    </br>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="backDisp()">Back</button>
+
+                </div>
+
+
+            </form>
             <div>
-                {{cur.title + " " + cur.desc}}
             </div>
-    
-        </form>
 
-        
-        <script src="app.js"></script>
-    </body>
+            <script src="app.js"></script>
+</body>
+
 </html>
-
