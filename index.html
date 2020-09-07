@@ -2,12 +2,14 @@
 <html>
 
 <head>
+    <!-- load Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-    <!-- CSS only -->
+    <!-- load Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+        
+    <!-- CSS -->
     <link rel="stylesheet" href="./style.css">
 
     <!-- JS, Popper.js, and jQuery -->
@@ -26,23 +28,21 @@
     <div class="jumbotron">
         <div class="container">
             <h1 class="page-header">{{ message }}</h1>
-
-
             <form>
-                Your Item:</br>
+                Your Item:<br />
                 <input class="form-control form-control-lg" type="text" placeholder="Item"
-                    ng-model="product.title"></br>
+                    ng-model="product.title"><br />
                 Description of Item:
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Description"
                     ng-model="product.desc"></textarea>
-                </br>
+                <br />
                 <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="addItem()">Add</button>
-                </br>
-                </br>
+                <br />
+                <br />
                 <h2>Item: {{product.title}} </h2>
-                </br>
+                <br />
                 <h2>Description: {{product.desc}} </h2>
-                </br>
+                <br />
 
                 <ul class="list-group" ng-show="!showCur">
                     <li class="d-flex list-group-item list-group-item-info" ng-repeat="product in products">
@@ -51,26 +51,21 @@
                         <button type="button" class="btn btn-dark col-sm-2"
                             ng-click="removeItem($index)">Delete</button>
                         <span>&nbsp;</span>
-                        <button type="button" class="btn btn-dark col-sm-2"
-                            ng-click="displayItem($index)">Open</button>
+                        <button type="button" class="btn btn-dark col-sm-2" ng-click="displayItem($index)">Open</button>
 
                     </li>
-
                 </ul>
 
                 <div ng-show="showCur">
-                    {{cur.title + " " + cur.desc}}
-                    </br>
+                    {{cur.title + " - " + cur.desc}}
+                    <br />
                     <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="backDisp()">Back</button>
-
                 </div>
-
-
             </form>
-            <div>
-            </div>
+        </div>
+    </div>
 
-            <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
